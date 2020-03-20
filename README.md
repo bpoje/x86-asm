@@ -65,9 +65,9 @@
 ## Simple bootsector and kernel in disk image
 
 I tried to learn, experiment and use gdb with the code from sources:
-http://inglorion.net/documents/tutorials/x86ostut/getting_started/
-https://arjunsreedharan.org/post/82710718100/kernels-101-lets-write-a-kernel
-https://wiki.osdev.org/Memory_Map_(x86
+http://inglorion.net/documents/tutorials/x86ostut/getting_started/<br/>
+https://arjunsreedharan.org/post/82710718100/kernels-101-lets-write-a-kernel<br/>
+https://wiki.osdev.org/Memory_Map_(x86<br/>
 
 
 Create raw disk in file, add bootloader and kernel:
@@ -112,4 +112,5 @@ $ cgdb
 ...
 ```
 
+You can write gdb commands to file .gdbinit in the project directory and gdb will load them automaticaly every time.
 

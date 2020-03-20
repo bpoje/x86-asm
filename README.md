@@ -61,3 +61,55 @@
   000001f0  f0 f1 f2 f3 f4 f5 f6 f7  f8 f9 fa fb fc fd fe ff  |................|
   00000200
   ```
+
+## Simple bootsector and kernel in disk image
+
+I tried to learn, experiment and use gdb with the code from sources:
+http://inglorion.net/documents/tutorials/x86ostut/getting_started/
+https://arjunsreedharan.org/post/82710718100/kernels-101-lets-write-a-kernel
+https://wiki.osdev.org/Memory_Map_(x86
+
+
+Create raw disk in file, add bootloader and kernel:
+```
+make
+```
+
+Run disk in qemu (package qemu-system-x86 on fedora) and try to type something on keyboard:
+```
+make run 
+```
+
+Clean build files
+```
+make clean
+```
+
+![Alt text](/3.simple-bootsector-kernel-disk/preview/preview.png "Screenshot")
+
+To debug:
+In first terminal execute command (ctrl+alt+g to release mouse):
+```
+qemu-system-x86_64 -m 64 -drive file=disk.raw,format=raw,index=0,media=disk -boot c -gdb tcp::1235 -S
+```
+
+In second terminal:
+```
+$ cgdb
+(gdb) set disassembly-flavor intel
+(gdb) display/i $cs*16+$pc
+(gdb) break *0x7c00
+(gdb) target remote localhost:1235
+(gdb) c
+     Breakpoint 1, 0x0000000000007c00 in ?? ()
+     1: x/i $cs*16+$pc
+     => 0x7c00:      mov    eax,0x680201
+(gdb) nexti
+    0x0000000000007c03 in ?? ()
+    1: x/i $cs*16+$pc
+    => 0x7c03:      push   0x31071000
+(gdb) nexti
+...
+```
+
+

@@ -1,1 +1,5 @@
 *~
+*.bin
+*.o
+keymap.inc
+disk.raw

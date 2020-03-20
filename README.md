@@ -1,11 +1,11 @@
 # x86-asm
 
 ## Master boot record
-* hellombr: Fill screen with colours and print string at boot
+* **hellombr: Fill screen with colours and print string at boot**
   
   ![Alt text](/1.hellombr/preview/preview.jpg "Screenshot")
 
-* writetosectormbr: Initialize the 512 Bytes (1 sector) in memory and write them to disk
+* **writetosectormbr: Initialize the 512 Bytes (1 sector) in memory and write them to disk**
   
   Disk values:
   - Before:
